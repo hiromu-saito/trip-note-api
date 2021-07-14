@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  front:
+    image: node:13.7-alpine
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: trip-note-front
+    working_dir: /app
+    ports:
+      - 8080:8080
+    tty: true
+    volumes:
+      - ../../trip-note-front:/app
+
+  api:
+    image: adoptopenjdk/openjdk11
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "18080:18080"
+    container_name: trip-note-api
+    working_dir: /app
+    volumes:
+      - ../:/app
+    tty: true
+
+  db:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    container_name: trip-note-db
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=trip-note
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=passw0rd
+      - MYSQL_ROOT_PASSWORD=passw0rd
+      - TZ=Japan
+    tty: true
