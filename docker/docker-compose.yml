@@ -13,6 +13,8 @@ services:
     tty: true
     volumes:
       - ../../trip-note-front:/app
+    depends_on:
+      - db
 
   api:
     image: adoptopenjdk/openjdk11
@@ -31,13 +33,12 @@ services:
     build:
       context: ./mysql
       dockerfile: Dockerfile
-    container_name: trip-note-db
+    container_name: mysql
     ports:
       - 3306:3306
     environment:
-      - MYSQL_DATABASE=trip-note
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=passw0rd
-      - MYSQL_ROOT_PASSWORD=passw0rd
-      - TZ=Japan
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_PASSWORD=${DB_PASS}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS}
+      - TZ=${TZ}
     tty: true
