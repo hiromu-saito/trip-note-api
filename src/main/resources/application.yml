@@ -3,6 +3,6 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql:3306/trip-note
+    url: jdbc:mysql://127.0.0.1/trip-note
     username: root
     password: pass
