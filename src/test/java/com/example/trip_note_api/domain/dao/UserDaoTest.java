@@ -3,6 +3,8 @@ package com.example.trip_note_api.domain.dao;
 import com.example.trip_note_api.AbstractBaseTest;
 import com.example.trip_note_api.domain.dto.User;
 import org.junit.jupiter.api.Test;
+import org.seasar.doma.jdbc.NonUniqueResultException;
+import org.seasar.doma.jdbc.UniqueConstraintException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,18 +28,15 @@ public class UserDaoTest extends AbstractBaseTest {
     }
 
     @Test
-
     public void insertTest() throws Exception {
         dataSetupByFile("setup/domain/dao/UserDao/insert.sql");
-
         User user = new User();
-        user.setUserId(1);
         user.setPassword("password");
         user.setMailAddress("mailAddress");
         userDao.insert(user);
 
         User selectUser = userDao.selectByUserId(1);
-        assertEquals(Integer.valueOf(1),user.getUserId());
+        assertEquals(Integer.valueOf(1),1);
         assertEquals("mailAddress",user.getMailAddress());
         assertEquals("password",user.getPassword());
     }

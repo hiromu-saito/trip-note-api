@@ -4,8 +4,8 @@ INTO users(
      mail_address,
      password
 )
-VALUES (
-    /* user.userId */1,
+SELECT
+    COALESCE(MAX(user_id) + 1, 1),
     /* user.mailAddress */'',
     /* user.password */''
-)
+from users;
