@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
+import org.seasar.doma.Id;
 import org.seasar.doma.Table;
 
 @Table(name = "users")
@@ -13,7 +14,7 @@ import org.seasar.doma.Table;
 @Setter
 public class User {
 
-
+    @Id
     @Column(name = "user_id")
     Integer userId;
 

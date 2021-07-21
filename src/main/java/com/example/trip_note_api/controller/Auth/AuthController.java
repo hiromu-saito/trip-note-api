@@ -6,10 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -19,11 +16,20 @@ public class AuthController {
     AuthService authService;
 
     @PostMapping
-    public ResponseEntity<Object> signup(@Validated @RequestBody LoginForm loginForm, Errors errors) {
+    public ResponseEntity<Object> signup(@Validated @RequestBody SigninForm signinForm, Errors errors) {
         if (errors.hasErrors()) {
             System.out.println("エラー処理いれる");
         }
-        authService.signup(loginForm);
+        authService.signup(signinForm);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+    }
+
+    @GetMapping
+    public ResponseEntity<Object> signin(@Validated @RequestBody SigninForm signinForm, Errors errors){
+        if(errors.hasErrors()){
+            System.out.println("エラー処理入れる");
+        }
+        var user = authService.signin(signinForm);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 }

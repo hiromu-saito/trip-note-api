@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-public class LoginForm {
+public class SigninForm {
 
     @NotNull
     String mailAddress;
