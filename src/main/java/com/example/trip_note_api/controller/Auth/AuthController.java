@@ -24,7 +24,7 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 
-    @GetMapping
+    @PutMapping
     public ResponseEntity<Object> signin(@Validated @RequestBody SigninForm signinForm, Errors errors){
         if(errors.hasErrors()){
             System.out.println("エラー処理入れる");

@@ -14,15 +14,11 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(SignupException.class)
     public ResponseEntity<Object>handleSignupException(Exception ex){
-        HttpHeaders headers = new HttpHeaders();
-        HttpStatus status = HttpStatus.CONFLICT;
-        return  new ResponseEntity<>(ex.getMessage(),headers,status);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception ex){
-        HttpHeaders headers = new HttpHeaders();
-        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        return new ResponseEntity<>(ex.getMessage(),headers,status);
+        return  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
     }
 }
