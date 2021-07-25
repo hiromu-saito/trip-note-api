@@ -65,4 +65,13 @@ public class UserDaoTest extends AbstractBaseTest {
         var getUser = userDao.selectByUserId(1);
         assertEquals("token",getUser.getToken());
     }
+
+    @Test
+    public void getUserIdByToken() throws  Exception{
+        dataSetupByFile("setup/domain/dao/UserDao/getUserIdByToken.sql");
+        var userId = userDao.getUserIdByToken("token");
+        assertEquals(1,userId);
+
+    }
 }
+

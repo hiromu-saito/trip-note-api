@@ -17,9 +17,15 @@ public interface UserDao {
     @Select
     User selectByAuthInfo(User user);
 
+    @Select
+    int getUserIdByToken(String token);
+
     @Insert(sqlFile = true,exclude = {"deleteFlag"})
     int insert (User user);
 
     @Update(sqlFile = true)
     int updateToken(User user);
+
+    @Update(sqlFile = true)
+    int removeToken(String token);
 }

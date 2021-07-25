@@ -1,29 +1,25 @@
-package com.example.trip_note_api.controller;
+package com.example.trip_note_api.controller.Auth;
 
 import com.example.trip_note_api.AbstractBaseTest;
 import com.example.trip_note_api.ApiExceptionHandler;
-import com.example.trip_note_api.controller.Auth.AuthController;
-import com.example.trip_note_api.controller.Auth.SigninForm;
 import com.example.trip_note_api.domain.dto.User;
 import com.example.trip_note_api.domain.exception.SignupException;
 import com.example.trip_note_api.domain.service.AuthService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.Mockito.*;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 
 
 public class AuthControllerTest extends AbstractBaseTest {

@@ -16,7 +16,7 @@ public interface MemoryDao {
     @Select
     List<Memory> selectByUserId(int userId);
 
-    @Insert (exclude = "deleteFlag")
+    @Insert (sqlFile = true)
     int insert(Memory memory);
 
     @Update(include = {"impression","accommodationDate"})

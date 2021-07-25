@@ -41,4 +41,7 @@ public class AuthService {
         userDao.updateToken(getUser);
         return getUser;
     }
+    public void signout(String token){
+        userDao.removeToken(token);
+    }
 }

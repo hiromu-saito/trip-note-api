@@ -32,4 +32,10 @@ public class AuthController {
         var user = authService.signin(signinForm);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
+
+    @DeleteMapping
+    public ResponseEntity<Object>signout(@RequestHeader(name = "x-trip-token") String token){
+        authService.signout(token);
+        return  ResponseEntity.status(HttpStatus.OK).body(null);
+    }
 }

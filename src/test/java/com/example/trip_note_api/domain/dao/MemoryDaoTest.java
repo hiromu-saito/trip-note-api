@@ -34,7 +34,6 @@ public class MemoryDaoTest extends AbstractBaseTest {
         dataSetupByFile("setup/domain/dao/MemoryDao/insertTest.sql");
         Memory memory = new Memory();
         memory.setUserId(1);
-        memory.setId(1);
         memory.setHotelName("ホテルA");
         memory.setHotelImage("イメージA");
         memory.setImpression("感想A");

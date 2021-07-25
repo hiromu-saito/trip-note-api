@@ -1,0 +1,1 @@
+SELECT user_id from users WHERE token = /* token */'';
