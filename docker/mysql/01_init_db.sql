@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS users (
   user_id       int          PRIMARY KEY        COMMENT 'ユーザーID',
   mail_address VARCHAR(30)   NOT NULL UNIQUE    COMMENT 'メールアドレス',
-  password     VARCHAR(30)   NOT NULL           COMMENT 'パスワード',
+  password     VARCHAR(100)   NOT NULL           COMMENT 'パスワード',
   token        VARCHAR(10)                      COMMENT 'トークン',
   delete_flag   int          DEFAULT 0 NOT NULL COMMENT '削除フラグ:0:有効,1:無効'
 );

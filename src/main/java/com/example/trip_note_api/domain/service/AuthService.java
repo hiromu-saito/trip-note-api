@@ -9,6 +9,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -22,7 +23,11 @@ public class AuthService {
     @Autowired
     ModelMapper modelMapper;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     public void signup(SigninForm signinForm) {
+        signinForm.setPassword(passwordEncoder.encode(signinForm.getPassword()));
         User user = modelMapper.map(signinForm, User.class);
         try {
             userDao.insert(user);
@@ -32,6 +37,7 @@ public class AuthService {
     }
 
     public User signin(SigninForm signinForm) {
+        signinForm.setPassword(passwordEncoder.encode(signinForm.getPassword()));
         User user = modelMapper.map(signinForm, User.class);
         var getUser = userDao.selectByAuthInfo(user);
         if (Objects.isNull(getUser)) {
