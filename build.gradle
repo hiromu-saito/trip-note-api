@@ -50,6 +50,7 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 
 	implementation "mysql:mysql-connector-java:+"
+	implementation "org.flywaydb:flyway-core"
 
 	implementation "org.modelmapper:modelmapper:1.1.3"
 	testImplementation 'com.ninja-squad:DbSetup:2.1.0'
