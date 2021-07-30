@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
@@ -39,7 +41,7 @@ public class AuthServiceTest extends AbstractBaseTest {
         user.setMailAddress("mailAddress");
         user.setPassword("password");
         user.setDeleteFlag(0);
-        doReturn(user).when(userDao).selectByAuthInfo(any(User.class));
+        doReturn(Optional.of(user)).when(userDao).selectByAuthInfo(any(User.class));
         User returnUser = authService.signin(new SigninForm());
         assertEquals(10, returnUser.getToken().length());
         assertEquals(1, returnUser.getUserId());

@@ -33,15 +33,14 @@ public class AuthService {
 
     public User signin(SigninForm signinForm) {
         User user = modelMapper.map(signinForm, User.class);
-        var getUser = userDao.selectByAuthInfo(user);
-        if (Objects.isNull(getUser)) {
-            throw  new AuthException("メールアドレスまたはパスワードが違います。");
-        }
-        getUser.setToken( RandomStringUtils.randomAlphanumeric(10));
+        var getUser = userDao.selectByAuthInfo(user)
+                .orElseThrow(() -> new AuthException("メールアドレスまたはパスワードが違います。"));
+        getUser.setToken(RandomStringUtils.randomAlphanumeric(10));
         userDao.updateToken(getUser);
         return getUser;
     }
-    public void signout(String token){
+
+    public void signout(String token) {
         userDao.removeToken(token);
     }
 }

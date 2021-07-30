@@ -27,17 +27,16 @@ public class MemoryController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Object> updateMemory(@RequestHeader(name = "x-trip-token") String token,
-                                               @PathVariable("id") String id,
+    public ResponseEntity<Object> updateMemory(@PathVariable("id") String id,
                                                @RequestBody MemoryForm memoryForm) {
-        memoryService.updateMemory(memoryForm, token, id);
+        memoryService.updateMemory(memoryForm, id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Object> deleteMemory(@RequestHeader(name = "x-trip-token") String token,
-                                               @PathVariable("id") String id) {
-        memoryService.deleteMemory(token,id);
+    public ResponseEntity<Object> deleteMemory(
+            @PathVariable("id") String id) {
+        memoryService.deleteMemory(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }

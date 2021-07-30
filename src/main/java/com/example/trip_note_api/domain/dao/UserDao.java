@@ -7,6 +7,8 @@ import org.seasar.doma.Select;
 import org.seasar.doma.Update;
 import org.seasar.doma.boot.ConfigAutowireable;
 
+import java.util.Optional;
+
 @Dao
 @ConfigAutowireable
 public interface UserDao {
@@ -15,7 +17,7 @@ public interface UserDao {
     User selectByUserId(int userId);
 
     @Select
-    User selectByAuthInfo(User user);
+    Optional<User> selectByAuthInfo(User user);
 
     @Select
     int getUserIdByToken(String token);

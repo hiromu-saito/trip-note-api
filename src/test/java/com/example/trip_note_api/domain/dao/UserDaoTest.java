@@ -50,7 +50,7 @@ public class UserDaoTest extends AbstractBaseTest {
     @Test
     public void selectByAuthInfoTest() throws Exception{
         dataSetupByFile("setup/domain/dao/UserDao/selectByAuthInfo.sql");
-        User selectUser = userDao.selectByAuthInfo(user);
+        User selectUser = userDao.selectByAuthInfo(user).get();
         assertEquals(1,selectUser.getUserId());
         assertEquals("password",selectUser.getPassword());
         assertEquals("mailAddress",selectUser.getMailAddress());

@@ -34,16 +34,14 @@ public class MemoryService {
         memoryDao.insert(memory);
     }
 
-    public void updateMemory(MemoryForm memoryForm, String token, String id) {
+    public void updateMemory(MemoryForm memoryForm,  String id) {
         var memory = modelMapper.map(memoryForm, Memory.class);
-        memory.setUserId(userDao.getUserIdByToken(token));
         memory.setId(Integer.valueOf(id));
         memoryDao.update(memory);
     }
 
-    public void deleteMemory(String token, String id) {
+    public void deleteMemory(String id) {
         Memory memory = new Memory();
-        memory.setUserId(userDao.getUserIdByToken(token));
         memory.setId(Integer.valueOf(id));
         memoryDao.delete(memory);
     }

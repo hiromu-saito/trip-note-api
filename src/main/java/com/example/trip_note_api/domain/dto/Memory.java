@@ -17,12 +17,11 @@ import java.sql.Timestamp;
 public class Memory {
 
     @Id
-    @Column(name = "user_id")
-    Integer userId;
-
-    @Id
     @Column(name = "id")
     Integer id;
+
+    @Column(name = "user_id")
+    Integer userId;
 
     @Column(name = "hotel_name")
     String hotelName;
