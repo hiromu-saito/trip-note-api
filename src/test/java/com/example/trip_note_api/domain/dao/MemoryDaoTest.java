@@ -38,6 +38,7 @@ public class MemoryDaoTest extends AbstractBaseTest {
         memory.setHotelImage("イメージA");
         memory.setImpression("感想A");
         memory.setAccommodationDate(Date.valueOf("2021-01-01"));
+        memory.setDetailUrl("url");
         memoryDao.insert(memory);
 
         var getMemory = memoryDao.selectByUserId(1).get(0);
@@ -47,7 +48,9 @@ public class MemoryDaoTest extends AbstractBaseTest {
         assertEquals("イメージA",getMemory.getHotelImage());
         assertEquals("感想A",getMemory.getImpression());
         assertEquals(Date.valueOf("2021-01-01"),getMemory.getAccommodationDate());
+        assertEquals("url",getMemory.getDetailUrl());
         assertEquals(0,getMemory.getDeleteFlag());
+
     }
     @Test
     public void updateTest()throws Exception{

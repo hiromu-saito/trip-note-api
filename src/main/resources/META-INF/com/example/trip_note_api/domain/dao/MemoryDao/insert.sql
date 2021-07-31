@@ -5,7 +5,8 @@ INTO memories(
     hotel_name,
     hotel_image,
     impression,
-    accommodation_date
+    accommodation_date,
+    detail_url
 )
 SELECT
     /* memory.userId */'',
@@ -13,5 +14,6 @@ SELECT
     /* memory.hotelName */'',
     /* memory.hotelImage */'',
     /* memory.impression */'',
-    /* memory.accommodationDate */''
+    /* memory.accommodationDate */'',
+    /* memory.detailUrl */''
 FROM memories WHERE user_id = /* memory.userId */''

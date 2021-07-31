@@ -35,6 +35,9 @@ public class Memory {
     @Column(name = "accommodation_date")
     Date accommodationDate;
 
+    @Column(name = "detail_url")
+    String detailUrl;
+
     @Column(name = "delete_flag")
     Integer deleteFlag;
 

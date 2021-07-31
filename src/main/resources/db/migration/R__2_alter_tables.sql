@@ -1,0 +1,1 @@
+ALTER TABLE memories ADD COLUMN  detail_url varchar(200) comment '詳細URL';

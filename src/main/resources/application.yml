@@ -6,3 +6,6 @@ spring:
     url: jdbc:mysql://127.0.0.1/trip-note
     username: root
     password: pass
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0

@@ -21,4 +21,6 @@ public class MemoryForm {
     @NotNull
     private String accommodationDate;
 
+    @NotNull
+    private String detailUrl;
 }
