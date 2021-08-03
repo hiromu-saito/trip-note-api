@@ -16,4 +16,4 @@ SELECT
     /* memory.impression */'',
     /* memory.accommodationDate */'',
     /* memory.detailUrl */''
-FROM memories WHERE user_id = /* memory.userId */''
+FROM memories
